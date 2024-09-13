@@ -1,0 +1,49 @@
+@startuml
+class Game {
+SnakeAndLadderBoard: board
+Queue<Player>: players
+Dice: dice
+startGame()
+}
+
+class SnakeAndLadderBoard {
+int : size
+List<Element>: snakes
+List<Element>: ladders
+movePlayerToNextPosition(int val)
+fetchfinalPosition(int val)
+}
+
+interface Element {
+int: start
+int: end
+moveToNextPosition()
+}
+
+class Snake implements Element{
+moveToNextPosition()
+}
+
+class Ladder implements Element{
+moveToNextPosition()
+}
+
+class Player {
+String: id
+String : playerName
+int: position
+getPlayerName()
+getPlayerPosition()
+}
+
+class DiceService {
+rollDice()
+}
+
+
+Game *-- DiceService
+Game *-- SnakeAndLadderBoard
+Game *-- Player
+Game *-- Element
+
+@enduml
